@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wanni | วันนี้ | Tasks</title>
+
+	<link rel="shortcut icon" href="/assets/icons/icon-152.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/icons/icon-152.png">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Wanni | วันนี้ | Tasks">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="canonical" href="https://wanni.levon.dev">
+	<meta name="description" content="Wanni | วันนี้ | Tasks">
+
+	<link rel="stylesheet" href="assets/app.css">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="theme-color" content="#06b6d4">
+
+	<link rel="preconnect" href="https://fonts.bunny.net">
+	<link href="https://fonts.bunny.net/css?family=rubik:400,500" rel="stylesheet" />
+</head>
+<body>
+	<main>
+		<div id="app" class="app">
+			<ul class="tasks"></ul>
+
+			<div class="form">
+
+				<label for="new-task">
+					<span>Add new task</span>
+					<input type="text" id="new-task">
+					<button>&plus;</button>
+				</label>
+			</div>
+
+			<button class="toggle-form">&plus;</button>
+		</div>
+	</main>
+
+	<script src="assets/app.js"></script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/sw.js').then(reg => console.log('[SW registered]', reg))
+			})
+		}
+	</script>
+</body>
+</html>
