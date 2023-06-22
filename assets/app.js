@@ -7,8 +7,12 @@
   const setTasks = (list) => localStorage.setItem('tasks', list)
 
   const toggleForm = () => {
-    form.querySelector('input').value = ''
+    const input = form.querySelector('input')
+    input.value = ''
     form.classList.toggle('visible')
+    if (form.classList.contains('visible')) {
+      input.focus()
+    }
   }
 
   const addTask = (task) => {
@@ -77,6 +81,19 @@
       const task = e.target.parentElement.querySelector('span').innerText
       removeTask(task)
       displayTaskList()
+    }
+  })
+
+  document.addEventListener('keyup', (e) => {
+    if (e.target.classList.contains('new-task')
+      && e.key === 'Enter') {
+
+      const task = e.target.value
+      if (!task) return
+
+      addTask(task)
+      displayTaskList()
+      toggleForm()
     }
   })
 
